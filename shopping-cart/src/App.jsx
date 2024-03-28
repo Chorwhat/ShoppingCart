@@ -4,14 +4,18 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import { MemoryRouter } from 'react-router-dom';
+import TotalCartDisplay from './components/TotalCartDisplay'
 
 
-function App() {
+function App({cart, emptyCart}) {
   const [count, setCount] = useState(0)
 
   return (
    <>
-      
+      <div>
+        <Navbar/>
+      </div>
+      <TotalCartDisplay cart={cart} emptyCart={emptyCart}/>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -32,9 +36,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <div>
-        <Navbar/>
-      </div>
+      
     </>
   )
 }

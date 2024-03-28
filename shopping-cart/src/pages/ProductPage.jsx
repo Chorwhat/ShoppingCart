@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
+import TotalCartDisplay from "../components/TotalCartDisplay";
 
-const ProductPage = () => {
+const ProductPage = ({ cart, addToCart, emptyCart, removeFromCart}) => {
 
 let itemsInfo = [
     {title: 'item 1',
@@ -21,9 +22,9 @@ let itemsInfo = [
     description: 'The fifth'},
 ]
 
-function convertObjectToProduct(obj) {
+function convertObjectToProduct(obj, index) {
     if(Object.prototype.hasOwnProperty.call(obj, "title") && Object.prototype.hasOwnProperty.call(obj, "cost") && Object.prototype.hasOwnProperty.call(obj, "description")){
-        return <Product title={obj.title} cost={obj.cost} description={obj.description} amount={0}/>
+        return <Product key={index} title={obj.title} cost={obj.cost} description={obj.description} amount={0} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>
     }
     else{
         print("must be a missing key")
@@ -32,10 +33,14 @@ function convertObjectToProduct(obj) {
 
 
 
+
   return (
     <>
       <p>Hi, I am Popeye! I love to eat Spinach!</p>
       <Link to="/">Click here to go back</Link>
+
+
+      <TotalCartDisplay cart={cart} emptyCart={emptyCart}/>
 
       {itemsInfo.map(convertObjectToProduct)}
     </>

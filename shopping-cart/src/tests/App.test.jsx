@@ -4,11 +4,16 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 import { MemoryRouter } from 'react-router-dom';
 
+
+function emptyCart(){
+  setCart([])
+}
+
 describe('App', () => {
   it('renders headline', () => {
     render(
     <MemoryRouter>
-    <App title="React" />
+    <App title="React" cart={[]} emptyCart={emptyCart}/>
     </MemoryRouter>);
     
 
