@@ -7,15 +7,15 @@ import { MemoryRouter } from 'react-router-dom';
 import TotalCartDisplay from './components/TotalCartDisplay'
 
 
-function App({cart, emptyCart}) {
+function App({cart, emptyCart, removeFromCart}) {
   const [count, setCount] = useState(0)
 
   return (
    <>
       <div>
-        <Navbar/>
+        <Navbar cart={cart}/>
       </div>
-      <TotalCartDisplay cart={cart} emptyCart={emptyCart}/>
+      <TotalCartDisplay cart={cart} emptyCart={emptyCart} removeFromCart={removeFromCart}/>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

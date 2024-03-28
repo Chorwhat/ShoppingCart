@@ -25,10 +25,11 @@
 
 
 import React, { useState } from 'react';
-import { createRoot } from 'react-dom';
+import ReactDOM from 'react-dom/client'
 import App from './App.jsx';
 import './index.css';
 import ProductPage from './pages/ProductPage.jsx';
+import CartPage from './pages/CartPage.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const AppWithCart = () => {
@@ -54,10 +55,7 @@ const AppWithCart = () => {
   };
 
   const removeFromCart = (product) => {
-    alert("clicked remove")
-    console.log("product: " + product.title)
     const updatedCart = cart.filter(item => item.title !== product.title);
-    console.log(updatedCart)
     setCart(updatedCart);
 };
 
@@ -67,14 +65,16 @@ const AppWithCart = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App cart={cart} emptyCart={emptyCart} />} />
+        <Route path="/" element={<App cart={cart} emptyCart={emptyCart} removeFromCart={removeFromCart} />} />
         <Route path="products" element={<ProductPage cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}  emptyCart={emptyCart}/>} />
+        <Route path="cart" element={<CartPage cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}  emptyCart={emptyCart}/>} />
+
       </Routes>
     </BrowserRouter>
   );
 };
 
-createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AppWithCart />
   </React.StrictMode>

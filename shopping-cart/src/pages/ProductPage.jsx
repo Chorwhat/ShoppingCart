@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "../components/Product";
 import TotalCartDisplay from "../components/TotalCartDisplay";
+import Navbar from "../components/Navbar";
 
 const ProductPage = ({ cart, addToCart, emptyCart, removeFromCart}) => {
 
@@ -36,12 +37,7 @@ function convertObjectToProduct(obj, index) {
 
   return (
     <>
-      <p>Hi, I am Popeye! I love to eat Spinach!</p>
-      <Link to="/">Click here to go back</Link>
-
-
-      <TotalCartDisplay cart={cart} emptyCart={emptyCart}/>
-
+      <Navbar cart={cart} />
       {itemsInfo.map(convertObjectToProduct)}
     </>
   );
