@@ -37,6 +37,19 @@
   padding: 2em;
 }
 
+.product-card{
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.product-page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .read-the-docs {
   color: #888;
 }
